@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nosotros</title>
+  <meta name="description" content="Quiénes somos y dónde encontrarnos.">
+  <meta name="theme-color" content="#F5EBE9">
+  <link rel="icon" href="/img/logo-ks.png">
+  <link rel="stylesheet" href="/css/styles.css">
+  <script src="/js/loader.js"></script>
+</head>
+<body data-page="nosotros" data-title="Nosotros">
+  <div id="loader" aria-hidden="true"><img src="/img/logo-ks.png" alt=""></div>
+  <main class="wrap">
+    <div class="page-head reveal"><h1>Nosotros</h1></div>
+    <div class="about">
+      <div class="reveal">
+        <p class="about-text" id="sobre"></p>
+        <div class="info">
+          <div id="rowHorario" hidden><i data-ic="clock" data-size="24"></i><div><h3>Horario</h3><span id="infoHorario"></span></div></div>
+          <div id="rowDir" hidden><i data-ic="pin" data-size="24"></i><div><h3>Dirección</h3><span id="infoDir"></span></div></div>
+          <div id="rowWa" hidden><i data-ic="chat" data-size="24"></i><div><h3>WhatsApp</h3><a class="wa" id="infoWa" target="_blank" rel="noopener">Escribinos</a></div></div>
+          <div id="rowIg" hidden><i data-ic="instagram" data-size="24"></i><div><h3>Instagram</h3><a id="infoIg" target="_blank" rel="noopener"></a></div></div>
+        </div>
+      </div>
+      <div class="reveal d1" id="mapBox" hidden>
+        <div class="map" id="map"></div>
+        <a class="btn btn-text" id="mapLink" target="_blank" rel="noopener">Abrir en Google Maps</a>
+      </div>
+    </div>
+  </main>
+  <script type="module" src="/js/nosotros.js"></script>
+</body>
+</html>

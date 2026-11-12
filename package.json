@@ -1,0 +1,12 @@
+{
+  "name": "korion-tienda",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Plantilla de tienda de iPhone con panel de administración (Korion Systems).",
+  "engines": { "node": ">=22.13" },
+  "scripts": {
+    "start": "node --disable-warning=ExperimentalWarning server/index.js",
+    "dev": "DATA_DIR=./data node --disable-warning=ExperimentalWarning --watch server/index.js"
+  }
+}

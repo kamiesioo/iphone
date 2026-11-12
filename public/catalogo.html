@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Catálogo</title>
+  <meta name="description" content="Catálogo de iPhone nuevos y usados.">
+  <meta name="theme-color" content="#F5EBE9">
+  <link rel="icon" href="/img/logo-ks.png">
+  <link rel="stylesheet" href="/css/styles.css">
+  <script src="/js/loader.js"></script>
+</head>
+<body data-page="catalogo" data-title="Catálogo">
+  <div id="loader" aria-hidden="true"><img src="/img/logo-ks.png" alt=""></div>
+  <main class="wrap">
+    <div class="page-head reveal">
+      <h1>Catálogo</h1>
+      <p class="lead">Nuevos y usados, revisados uno por uno.</p>
+    </div>
+    <div class="tools">
+      <div class="search"><i data-ic="search" data-size="18"></i><input type="search" id="q" placeholder="Buscar modelo, color o GB" aria-label="Buscar"></div>
+      <div class="chips" id="estadoChips">
+        <button class="chip on" data-estado="todos">Todos</button>
+        <button class="chip" data-estado="nuevo">Nuevos</button>
+        <button class="chip" data-estado="usado">Usados</button>
+        <button class="chip" data-estado="oferta">Ofertas</button>
+      </div>
+      <select id="linea" aria-label="Línea"></select>
+      <select id="orden" aria-label="Ordenar">
+        <option value="asc">Menor precio</option>
+        <option value="desc">Mayor precio</option>
+        <option value="az">A – Z</option>
+      </select>
+      <span class="count" id="count"></span>
+    </div>
+    <div class="grid" id="grid"></div>
+    <p class="empty" id="empty" hidden>No encontramos equipos con esos filtros.</p>
+    <div class="spacer"></div>
+  </main>
+  <script type="module" src="/js/catalogo.js"></script>
+</body>
+</html>

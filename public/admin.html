@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Panel · Administración</title>
+  <meta name="theme-color" content="#F5EBE9">
+  <link rel="icon" href="/img/logo-ks.png">
+  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body class="adm">
+
+  <!-- Ingreso -->
+  <main class="login" id="loginView" hidden>
+    <form id="loginForm">
+      <img src="/img/logo-ks.png" alt="" width="64" height="64">
+      <h1>Panel de la tienda</h1>
+      <div class="field"><label for="pw">Contraseña</label><input type="password" id="pw" autocomplete="current-password" required></div>
+      <p class="err" id="loginErr" hidden></p>
+      <button class="btn btn-ink btn-block" type="submit">Ingresar</button>
+    </form>
+  </main>
+
+  <!-- App -->
+  <div id="appView" hidden>
+    <header class="adm-top">
+      <div class="wrap adm-top-in">
+        <strong id="admName">Panel</strong>
+        <nav class="adm-tabs" id="tabs">
+          <button class="chip on" data-tab="productos">Productos</button>
+          <button class="chip" data-tab="pedidos">Pedidos <span class="pill" id="pendCount" hidden></span></button>
+          <button class="chip" data-tab="tienda">Tienda</button>
+        </nav>
+        <a class="link" href="/" target="_blank" rel="noopener">Ver sitio</a>
+        <button class="link" id="logout">Salir</button>
+      </div>
+    </header>
+
+    <main class="wrap adm-main">
+      <!-- Productos -->
+      <section id="tab-productos">
+        <div class="adm-bar">
+          <h2>Productos</h2>
+          <button class="btn btn-sm" id="newProd">Nuevo producto</button>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th></th><th>Modelo</th><th>Estado</th><th>Precio</th><th>Desc. %</th><th>Stock</th><th>Visible</th><th></th></tr></thead>
+            <tbody id="prodRows"></tbody>
+          </table>
+        </div>
+        <p class="empty" id="prodEmpty" hidden>Todavía no hay productos. Creá el primero con "Nuevo producto".</p>
+      </section>
+
+      <!-- Pedidos -->
+      <section id="tab-pedidos" hidden>
+        <div class="adm-bar"><h2>Pedidos</h2></div>
+        <div id="orderList"></div>
+        <p class="empty" id="orderEmpty" hidden>Todavía no hay pedidos.</p>
+      </section>
+
+      <!-- Tienda -->
+      <section id="tab-tienda" hidden>
+        <div class="adm-bar"><h2>Datos de la tienda</h2></div>
+        <form id="storeForm" class="store-form">
+          <div class="cols">
+            <div class="field"><label for="s-nombre">Nombre</label><input type="text" id="s-nombre" maxlength="60" required></div>
+            <div class="field"><label for="s-ciudad">Ciudad</label><input type="text" id="s-ciudad" maxlength="60"></div>
+          </div>
+          <div class="field"><label for="s-eslogan">Eslogan</label><input type="text" id="s-eslogan" maxlength="160"></div>
+          <div class="field"><label for="s-sobre">Sobre nosotros</label><textarea id="s-sobre" maxlength="400"></textarea></div>
+          <div class="cols">
+            <div class="field"><label for="s-whatsapp">WhatsApp (con código de país, sin + ni espacios)</label><input type="tel" id="s-whatsapp" placeholder="5493530000000" maxlength="20"></div>
+            <div class="field"><label for="s-instagram">Instagram (usuario, sin @)</label><input type="text" id="s-instagram" maxlength="40"></div>
+          </div>
+          <div class="cols">
+            <div class="field"><label for="s-direccion">Dirección</label><input type="text" id="s-direccion" maxlength="140" placeholder="Si la dejás vacía no se muestra el mapa"></div>
+            <div class="field"><label for="s-horario">Horario</label><input type="text" id="s-horario" maxlength="100"></div>
+          </div>
+          <div class="field"><label for="s-mapa">Ubicación en el mapa (link de Google Maps)</label><input type="text" id="s-mapa" maxlength="600" placeholder="https://www.google.com/maps/@-32.41,-63.24,16z"><span class="muted small">Abrí tu local en Google Maps y pegá el link de la barra de direcciones. Vacío = el mapa usa la dirección escrita.</span></div>
+          <div class="cols">
+            <div class="field"><label for="s-moneda">Moneda de los precios</label>
+              <select id="s-moneda"><option value="USD">Dólares (US$)</option><option value="ARS">Pesos ($)</option></select></div>
+            <div class="field"><label for="s-acento">Color de acento</label><input type="color" id="s-acento" class="color"></div>
+          </div>
+          <div class="field"><span class="lbl">Servicios que se muestran</span>
+            <div class="checks">
+              <label><input type="checkbox" id="sv-financiacion"> Financiación</label>
+              <label><input type="checkbox" id="sv-usados"> Recibimos usados</label>
+              <label><input type="checkbox" id="sv-mayorista"> Venta mayorista</label>
+              <label><input type="checkbox" id="sv-accesorios"> Accesorios</label>
+            </div>
+          </div>
+          <div class="cols">
+            <div class="field"><label for="s-hot-titulo">Nombre de la promo</label><input type="text" id="s-hot-titulo" maxlength="40" placeholder="Hot Sale"></div>
+            <div class="field"><label for="s-hot-hasta">Termina el (vacío = sin cuenta regresiva)</label><input type="datetime-local" id="s-hot-hasta"></div>
+          </div>
+          <p class="muted small">Las ofertas son los productos que tengan un descuento mayor a 0. Aparecen en la tarjeta del inicio y en la página Ofertas.</p>
+          <p class="err" id="storeErr" hidden></p>
+          <div class="row-actions">
+            <button class="btn btn-ink" type="submit">Guardar cambios</button>
+            <a class="btn btn-text" href="/api/admin/respaldo">Descargar respaldo de la base</a>
+          </div>
+        </form>
+      </section>
+    </main>
+  </div>
+
+  <!-- Producto (crear / editar) -->
+  <dialog id="prodDialog">
+    <form id="prodForm" method="dialog">
+      <h2 id="prodTitle">Producto</h2>
+      <div class="cols">
+        <div class="field"><label for="p-modelo">Modelo</label><input type="text" id="p-modelo" maxlength="80" required></div>
+        <div class="field"><label for="p-linea">Línea</label><input type="text" id="p-linea" maxlength="30" placeholder="Pro, Estándar, SE…"></div>
+      </div>
+      <div class="cols3">
+        <div class="field"><label for="p-gb">GB</label><input type="number" id="p-gb" min="0" max="4096"></div>
+        <div class="field"><label for="p-color">Color</label><input type="text" id="p-color" maxlength="40"></div>
+        <div class="field"><label for="p-estado">Estado</label><select id="p-estado"><option value="nuevo">Nuevo</option><option value="usado">Usado</option></select></div>
+      </div>
+      <div class="cols3">
+        <div class="field"><label for="p-precio">Precio</label><input type="number" id="p-precio" min="1" required></div>
+        <div class="field"><label for="p-descuento">Descuento %</label><input type="number" id="p-descuento" min="0" max="90" value="0"></div>
+        <div class="field"><label for="p-stock">Stock</label><input type="number" id="p-stock" min="0" value="1"></div>
+      </div>
+      <div class="cols">
+        <div class="field" id="batField" hidden><label for="p-bateria">Batería %</label><input type="number" id="p-bateria" min="1" max="100"></div>
+        <div class="field"><label for="p-tono">Color del dibujo (si no hay foto)</label><input type="color" id="p-tono" class="color" value="#c9a98a"></div>
+      </div>
+      <div class="field">
+        <span class="lbl">Foto</span>
+        <div class="photo-row">
+          <div class="photo-prev" id="photoPrev"></div>
+          <div>
+            <label class="btn btn-sm btn-ink" for="p-file">Subir foto</label>
+            <input type="file" id="p-file" accept="image/jpeg,image/png,image/webp" hidden>
+            <button class="link" type="button" id="photoClear" hidden>Quitar</button>
+            <p class="muted small" id="photoMsg">JPG, PNG o WebP. Se optimiza sola.</p>
+          </div>
+        </div>
+      </div>
+      <label class="check"><input type="checkbox" id="p-activo" checked> Visible en la tienda</label>
+      <p class="err" id="prodErr" hidden></p>
+      <div class="row-actions">
+        <button class="btn btn-ink" type="submit" id="prodSave">Guardar</button>
+        <button class="btn btn-text" type="button" id="prodCancel">Cancelar</button>
+      </div>
+    </form>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script type="module" src="/js/admin.js"></script>
+</body>
+</html>

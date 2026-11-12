@@ -1,0 +1,17 @@
+services:
+  tienda:
+    build: .
+    restart: unless-stopped
+    ports:
+      - "${PORT:-80}:3000"
+    environment:
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD:?Definí ADMIN_PASSWORD en el archivo .env}
+      TIENDA: ${TIENDA:-demo}          # perfil inicial: demo | mundoapple | iphonevm (solo el primer arranque)
+      SEED_PRODUCTOS: ${SEED_PRODUCTOS:-1} # 0 = arrancar sin productos de ejemplo
+      COOKIE_SECURE: ${COOKIE_SECURE:-0}   # 1 si el sitio se sirve por HTTPS
+      TRUST_PROXY: ${TRUST_PROXY:-0}       # 1 si hay un proxy (Caddy/Nginx) delante
+    volumes:
+      - tienda-data:/data
+
+volumes:
+  tienda-data:

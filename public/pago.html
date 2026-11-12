@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Finalizar pedido</title>
+  <meta name="description" content="Completá tu pedido.">
+  <meta name="theme-color" content="#F5EBE9">
+  <link rel="icon" href="/img/logo-ks.png">
+  <link rel="stylesheet" href="/css/styles.css">
+  <script src="/js/loader.js"></script>
+</head>
+<body data-page="pago" data-title="Finalizar pedido">
+  <div id="loader" aria-hidden="true"><img src="/img/logo-ks.png" alt=""></div>
+  <main class="wrap">
+    <div class="page-head"><h1>Finalizar pedido</h1></div>
+
+    <div id="emptyCart" class="empty" hidden>
+      Tu carrito está vacío.<br><br><a class="btn" href="/catalogo">Ver catálogo</a>
+    </div>
+
+    <div id="checkoutWrap">
+      <div class="pay-grid">
+        <form id="payForm" novalidate>
+          <h2>Tus datos</h2>
+          <div class="field"><label for="nombre">Nombre y apellido</label><input type="text" id="nombre" name="nombre" autocomplete="name" maxlength="80"></div>
+          <div class="field"><label for="telefono">Teléfono</label><input type="tel" id="telefono" name="telefono" autocomplete="tel" maxlength="30" placeholder="Para coordinar la entrega"></div>
+
+          <div class="field"><span class="lbl">Entrega</span>
+            <div class="opts">
+              <label class="opt"><input type="radio" name="entrega" value="retiro" checked><span>Retiro en local</span></label>
+              <label class="opt"><input type="radio" name="entrega" value="envio"><span>Envío a domicilio</span></label>
+            </div>
+          </div>
+          <div class="field" id="dirField" hidden><label for="direccion">Dirección de envío</label><input type="text" id="direccion" name="direccion" autocomplete="street-address" maxlength="200"></div>
+
+          <div class="field"><span class="lbl">Forma de pago</span><div class="opts" id="pagoOpts"></div></div>
+          <div class="field" id="usadoField" hidden><label for="usado">Tu iPhone usado (modelo, GB, estado de batería)</label><input type="text" id="usado" name="usado" maxlength="200"></div>
+
+          <div class="field"><label for="notas">Notas (opcional)</label><textarea id="notas" name="notas" maxlength="300"></textarea></div>
+
+          <p class="err" id="formErr" role="alert" hidden></p>
+          <button class="btn btn-ink" type="submit" id="submitBtn">Confirmar pedido</button>
+        </form>
+
+        <aside class="summary">
+          <h2>Tu pedido</h2>
+          <div id="sumItems"></div>
+          <div class="sum-line"><span>Subtotal</span><span id="sumSub"></span></div>
+          <div class="sum-line" id="sumSaveRow"><span>Ahorro por ofertas</span><span id="sumSave"></span></div>
+          <div class="sum-total"><span>Total</span><span id="sumTotal"></span></div>
+        </aside>
+      </div>
+    </div>
+
+    <div class="done" id="doneWrap" hidden>
+      <div class="ok"><i data-ic="check" data-size="30"></i></div>
+      <h1 style="font-size:clamp(2rem,5vw,3rem)">¡Pedido registrado!</h1>
+      <div class="code" id="orderCode"></div>
+      <p id="doneMsg"></p>
+      <a class="btn" id="sendWa" target="_blank" rel="noopener" hidden>Enviar pedido por WhatsApp</a>
+      <div class="manual" id="manualBox" hidden>
+        <textarea id="orderText" readonly></textarea>
+        <div class="center" style="margin-top:14px"><button class="btn btn-sm" id="copyBtn" type="button">Copiar pedido</button></div>
+      </div>
+      <p style="margin-top:34px"><a class="btn btn-text" href="/catalogo">Seguir mirando el catálogo</a></p>
+    </div>
+  </main>
+  <script type="module" src="/js/pago.js"></script>
+</body>
+</html>

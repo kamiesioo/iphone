@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ofertas</title>
+  <meta name="description" content="Ofertas por tiempo limitado en iPhone.">
+  <meta name="theme-color" content="#F5EBE9">
+  <link rel="icon" href="/img/logo-ks.png">
+  <link rel="stylesheet" href="/css/styles.css">
+  <script src="/js/loader.js"></script>
+</head>
+<body data-page="ofertas" data-title="Ofertas">
+  <div id="loader" aria-hidden="true"><img src="/img/logo-ks.png" alt=""></div>
+  <main class="wrap">
+    <div class="page-head reveal">
+      <p class="eyebrow">🔥 Ofertas por tiempo limitado</p>
+      <h1 id="hotTitle">Hot Sale</h1>
+      <div class="countdown" id="countdown" hidden aria-label="Tiempo restante" style="justify-content:flex-start;margin-top:26px"></div>
+    </div>
+    <div class="grid" id="grid"></div>
+    <p class="empty" id="empty" hidden>Por ahora no hay ofertas activas. ¡Volvé pronto!<br><br><a class="btn btn-text" href="/catalogo">Ver el catálogo</a></p>
+    <div class="spacer"></div>
+  </main>
+  <script type="module" src="/js/ofertas.js"></script>
+</body>
+</html>

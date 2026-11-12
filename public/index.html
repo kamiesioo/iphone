@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Inicio</title>
+  <meta name="description" content="iPhone nuevos y usados con garantía, ofertas y pedido directo por WhatsApp.">
+  <meta name="theme-color" content="#F5EBE9">
+  <link rel="icon" href="/img/logo-ks.png">
+  <link rel="stylesheet" href="/css/styles.css">
+  <script src="/js/loader.js"></script>
+</head>
+<body data-page="home" data-title="Inicio">
+  <div id="loader" aria-hidden="true"><img src="/img/logo-ks.png" alt=""></div>
+  <main>
+    <section class="hero">
+      <div class="wrap hero-in">
+        <div class="hero-copy">
+          <p class="eyebrow reveal" data-store="ciudad"></p>
+          <h1 class="reveal d1">iPhone <em>originales</em>,<br>con garantía.</h1>
+          <p class="lead reveal d2" data-store="eslogan"></p>
+          <div class="hero-cta reveal d3">
+            <a class="btn" href="/catalogo">Ver catálogo</a>
+            <a class="btn btn-text" id="heroHot" href="/ofertas" hidden>🔥 Ir al Hot Sale</a>
+          </div>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+          <div class="hphone hp-a"><span class="cam"></span></div>
+          <div class="hphone hp-b"><span class="cam"></span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="wrap" id="promoWrap" hidden>
+      <div class="promo reveal">
+        <div>
+          <h2 id="promoTitle">Hot Sale</h2>
+          <p id="promoText"></p>
+          <a class="btn btn-ink" href="/ofertas">Ver ofertas</a>
+        </div>
+        <div class="countdown" id="countdown" hidden aria-label="Tiempo restante"></div>
+      </div>
+    </section>
+
+    <section class="wrap section" id="destacadosWrap" hidden>
+      <div class="section-head reveal">
+        <h2>Destacados</h2>
+        <a class="btn btn-text" href="/catalogo">Ver todo</a>
+      </div>
+      <div class="grid" id="destacados"></div>
+    </section>
+
+    <section class="wrap section">
+      <div class="section-head reveal"><h2>Por qué comprar con nosotros</h2></div>
+      <div class="services" id="services"></div>
+    </section>
+
+    <section class="wrap contact reveal">
+      <h2>¿Buscás un modelo en particular?</h2>
+      <p>Escribinos y te confirmamos stock, colores y formas de pago.</p>
+      <div class="contact-actions">
+        <a class="btn" data-wa="Hola {tienda}! Quiero consultar por un iPhone." target="_blank" rel="noopener">Escribir por WhatsApp</a>
+        <a class="btn btn-text" href="/nosotros">Dónde encontrarnos</a>
+      </div>
+    </section>
+  </main>
+  <script type="module" src="/js/home.js"></script>
+</body>
+</html>
